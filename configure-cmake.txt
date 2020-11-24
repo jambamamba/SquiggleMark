@@ -1,0 +1,17 @@
+cmake-gui
+
+Source Dir
+/home/developer/oosman/work.git/SquiggleMark
+
+Build Dir
+/tmp/build
+
+Qt_DIR's:
+/home/developer/oosman/Qt5.12.1/5.12.1/gcc_64/lib/cmake/Qt5Concurrent
+/home/developer/oosman/Qt5.12.1/5.12.1/gcc_64/lib/cmake/Qt5Core
+/home/developer/oosman/Qt5.12.1/5.12.1/gcc_64/lib/cmake/Qt5Gui
+/home/developer/oosman/Qt5.12.1/5.12.1/gcc_64/lib/cmake/Qt5Network
+/home/developer/oosman/Qt5.12.1/5.12.1/gcc_64/lib/cmake/Qt5Svg
+/home/developer/oosman/Qt5.12.1/5.12.1/gcc_64/lib/cmake/Qt5Widgets
+
+

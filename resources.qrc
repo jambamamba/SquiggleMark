@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/folder-with-pictures.png</file>
+        <file>resources/pictures.png</file>
+        <file>resources/bold.png</file>
+        <file>resources/oblique.png</file>
+        <file>resources/underline.png</file>
+        <file>resources/copyright.png</file>
+        <file>resources/registered.png</file>
+        <file>resources/trademark.png</file>
+        <file>resources/colorpicker.png</file>
+        <file>resources/checkeredBackground.jpg</file>
+        <file>resources/squigglemark.rc</file>
+        <file>resources/private.key</file>
+        <file>resources/peacock.png</file>
+        <file>resources/windmill.png</file>
+        <file>resources/spritemill-watermark.png</file>
+        <file>resources/squigglemark-watermark.png</file>
+        <file>resources/play-button.png</file>
+        <file>resources/pause-button.png</file>
+        <file>resources/speaker-button.png</file>
+        <file>resources/license.txt</file>
+        <file>resources/license3.txt</file>
+        <file>resources/reload.png</file>
+        <file>resources/speaker-button-mute.png</file>
+        <file>resources/check-button.png</file>
+    </qresource>
+</RCC>

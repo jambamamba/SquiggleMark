@@ -1,0 +1,81 @@
+#!/bin/sh
+#
+# To check the RPATH inside the exe:
+# objdump -x SquiggleMark-build/SquiggleMark | grep RPATH
+# 
+# Use ghex to change the RPATH inside the executable. Replace RPATH from
+# /home/oosman/Qt/5.5/gcc_64/lib
+# to
+# ./libs:./platforms:./imgformat
+
+QTDIR="/home/oosman/Qt/5.5"
+if [ `getconf LONG_BIT` = "64" ]
+then
+	GCCDIR="$QTDIR/gcc_64"
+	PLUGINS="$GCCDIR/plugins"
+	LIBDIR="/lib/x86_64-linux-gnu"
+	USRLIBDIR="/usr/lib/x86_64-linux-gnu"
+else
+	GCCDIR="$QTDIR/gcc"
+	PLUGINS="$GCCDIR/plugins"
+	LIBDIR="/lib/x86-linux-gnu"
+	USRLIBDIR="/usr/lib/x86-linux-gnu"
+fi
+
+rm -fr ../../SquiggleMark-build/linux-bundle
+
+mkdir  ../../SquiggleMark-build/linux-bundle
+mkdir  ../../SquiggleMark-build/linux-bundle/SquiggleMark
+mkdir  ../../SquiggleMark-build/linux-bundle/SquiggleMark/resources
+mkdir  ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+mkdir  ../../SquiggleMark-build/linux-bundle/SquiggleMark/platforms
+mkdir  ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+
+cp ../../SquiggleMark-build/SquiggleMark ../../SquiggleMark-build/linux-bundle/SquiggleMark
+#cp ../../SquiggleMark-build/license.key ../../SquiggleMark-build/linux-bundle/SquiggleMark
+chmod a+x ../../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark
+
+chmod a+x run-squigglemark
+cp run-squigglemark ../../SquiggleMark-build/linux-bundle/SquiggleMark
+
+cp $PLUGINS/platforms/* ../../SquiggleMark-build/linux-bundle/SquiggleMark/platforms
+
+cp $PLUGINS/imageformats/libqgif.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqico.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqjp2.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqjpeg.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqmng.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqsvg.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqtga.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqtiff.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+cp $PLUGINS/imageformats/libqwbmp.so ../../SquiggleMark-build/linux-bundle/SquiggleMark/imageformat
+
+cp $GCCDIR/lib/libQt5Core.so.5 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libQt5Widgets.so.5 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libQt5Svg.so.5 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libQt5Gui.so.5 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libQt5Core.so.5  ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libQt5DBus.so.5  ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libicui18n.so.54 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libicuuc.so.54 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $GCCDIR/lib/libicudata.so.54 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $LIBDIR/libcrypto.so.1.0.0 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $LIBDIR/libm.so.6 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $LIBDIR/libgcc_s.so.1 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $LIBDIR/libc.so.6 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $LIBDIR/libpthread.so.0 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $USRLIBDIR/libgobject-2.0.so.0 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+cp $USRLIBDIR/libstdc++.so.6 ../../SquiggleMark-build/linux-bundle/SquiggleMark/libs
+
+chmod a+x remove-menuitem.sh
+cp remove-menuitem.sh ../../SquiggleMark-build/linux-bundle/SquiggleMark
+chmod a+x add-menuitem.sh
+cp add-menuitem.sh ../../SquiggleMark-build/linux-bundle/SquiggleMark
+
+cp ../resources/peacock-*.png ../../SquiggleMark-build/linux-bundle/SquiggleMark/resources
+#cp ../resources/SquiggleMark_license.key ../../SquiggleMark-build/linux-bundle/SquiggleMark/license.key
+
+cd ../../SquiggleMark-build/linux-bundle
+tar -cvzf ../SquiggleMarkSetup.tar.gz *
+cd ../../SquiggleMark/install-scripts
+

@@ -1,0 +1,51 @@
+
+~/Qt5/5.5/clang_64/bin/uic MainWindow.ui > ui_MainWindow.h
+~/Qt5/5.5/clang_64/bin/uic ControlsAreaWidget.ui > ui_ControlsAreaWidget.h
+~/Qt5/5.5/clang_64/bin/uic FileListLoading.ui > ui_FileListLoading.h
+~/Qt5/5.5/clang_64/bin/uic FileListLoading.ui > ui_FileListLoading.h
+~/Qt5/5.5/clang_64/bin/uic LicenseWidget.ui > ui_MainWindoLicenseWidget.h
+~/Qt5/5.5/clang_64/bin/uic MoviePlayerWidget.ui > ui_MoviePlayerWidget.h
+~/Qt5/5.5/clang_64/bin/uic PreviewAreaWidget.ui > ui_PreviewAreaWidget.h
+~/Qt5/5.5/clang_64/bin/uic ReferenceImageSizeHelp.ui > ui_ReferenceImageSizeHelp.h
+~/Qt5/5.5/clang_64/bin/uic RotationWidget.ui > ui_RotationWidget.h
+~/Qt5/5.5/clang_64/bin/uic QualitySlider.ui > ui_QualitySlider.h
+~/Qt5/5.5/clang_64/bin/uic UpdaterWidget.ui > ui_UpdaterWidget.h
+
+
+otool -L SquiggleMark
+
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libcrypto.1.1.dylib /usr/local/lib/libcrypto.1.1.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libssl.1.1.dylib /usr/local/lib/libssl.1.1.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libfreetype.6.dylib  /usr/local/lib/libfreetype.6.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libavcodec.57.dylib /usr/local/lib/libavcodec.57.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libavdevice.57.dylib /usr/local/lib/libavdevice.57.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libavfilter.6.dylib /usr/local/lib/libavfilter.6.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libavformat.57.dylib /usr/local/lib/libavformat.57.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libavutil.55.dylib /usr/local/lib/libavutil.55.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libswresample.2.dylib /usr/local/lib/libswresample.2.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libswscale.4.dylib /usr/local/lib/libswscale.4.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libcurl.4.dylib /usr/local/lib/libcurl.4.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libvorbisenc.2.dylib /usr/local/lib/libvorbisenc.2.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libvorbis.0.dylib /usr/local/lib/libvorbis.0.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libogg.0.dylib /usr/local/lib/libogg.0.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libtheoraenc.1.dylib /usr/local/lib/libtheoraenc.1.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libtheoradec.1.dylib /usr/local/lib/libtheoradec.1.dylib
+ln -s /Users/OsleTek/work/libs/build/osx/bin/libopenh264.2.dylib /usr/local/lib/libopenh264.2.dylib
+
+rm /usr/local/lib/libcrypto.1.1.dylib
+rm /usr/local/lib/libssl.1.1.dylib
+rm /usr/local/lib/libfreetype.6.dylib
+rm /usr/local/lib/libavcodec.57.dylib
+rm /usr/local/lib/libavdevice.57.dylib
+rm /usr/local/lib/libavfilter.6.dylib
+rm /usr/local/lib/libavformat.57.dylib
+rm /usr/local/lib/libavutil.55.dylib
+rm /usr/local/lib/libswresample.2.dylib
+rm /usr/local/lib/libswscale.4.dylib
+rm /usr/local/lib/libcurl.4.dylib
+rm /usr/local/lib/libvorbisenc.2.dylib
+rm /usr/local/lib/libvorbis.0.dylib
+rm /usr/local/lib/libogg.0.dylib
+rm /usr/local/lib/libtheoraenc.1.dylib
+rm /usr/local/lib/libtheoradec.1.dylib
+rm /usr/local/lib/libopenh264.2.dylib

@@ -1,0 +1,11 @@
+mkdir  ../SquiggleMark-build/darwin
+cp	/Users/oosman/Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/QtWidgets ../SquiggleMark-build/darwin
+cp	/Users/oosman/Qt/5.3/clang_64/lib/QtSvg.framework/Versions/5/QtSvg ../SquiggleMark-build/darwin
+cp	/usr/lib/libcrypto.0.9.8.dylib ../SquiggleMark-build/darwin
+cp	/usr/lib/libssl.0.9.8.dylib ../SquiggleMark-build/darwin
+cp	/usr/lib/libSystem.B.dylib ../SquiggleMark-build/darwin
+cp	/Users/oosman/Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/QtGui ../SquiggleMark-build/darwin
+cp	/Users/oosman/Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/QtCore ../SquiggleMark-build/darwin
+cp	/usr/lib/libstdc++.6.dylib ../SquiggleMark-build/darwin
+cp  ../SquiggleMark-build/SquiggleMark ../SquiggleMark-build/darwin
+

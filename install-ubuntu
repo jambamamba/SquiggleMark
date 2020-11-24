@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+#http://codevarium.gameka.com.br/deploying-cc-linux-applications-supporting-both-32-bit-and-64-bit/
+
+rm -fr ../SquiggleMark-build/linux-bundle/SquiggleMark
+
+#wget http://codevarium.gameka.com.br/files/cpld.bash
+#chmod a+x cpld.bash
+#mv cpld.bash cpld
+
+mkdir  ../SquiggleMark-build/linux-bundle
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark/data
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark/data/libs
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark/data/resources
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/plugins
+mkdir  ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+
+./cpld ../SquiggleMark-build/SquiggleMark ../SquiggleMark-build/linux-bundle/SquiggleMark/data/libs
+
+cp ../SquiggleMark-build/SquiggleMark ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin
+chmod a+x ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/SquiggleMark
+
+chmod a+x run-squigglemark
+cp run-squigglemark ../SquiggleMark-build/linux-bundle/SquiggleMark
+
+PLUGINS="/home/oosman/Qt/5.3/gcc_64/plugins"
+
+cp $PLUGINS/platforms/* ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/plugins
+cp $PLUGINS/imageformats/libqgif.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqico.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqjp2.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqjpeg.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqmng.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqsvg.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqtga.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqtiff.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+cp $PLUGINS/imageformats/libqwbmp.so ../SquiggleMark-build/linux-bundle/SquiggleMark/data/bin/imageformats
+
+chmod a+x remove-menuitem.sh
+cp remove-menuitem.sh ../SquiggleMark-build/linux-bundle/SquiggleMark
+chmod a+x add-menuitem.sh
+cp add-menuitem.sh ../SquiggleMark-build/linux-bundle/SquiggleMark
+
+cp resources/peacock-*.png ../SquiggleMark-build/linux-bundle/SquiggleMark/data/resources
+
+pushd .
+cd ../SquiggleMark-build/linux-bundle
+tar -cvzf ../SquiggleMarkSetup.tar.gz *
+popd
+
+
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libQt5Widgets.so.5 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libQt5Widgets.so
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libQt5Svg.so.5 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libQt5Svg.so
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libQt5Gui.so.5 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libQt5Gui.so
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libQt5Core.so.5  ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libQt5Core.so
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libicui18n.so.52 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libicui18n.so
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libicuuc.so.52 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libicuuc.so
+#cp /home/oosman/Qt/5.3/gcc_64/lib/libicudata.so.52 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libicudata.so
+#cp /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libcrypto.so
+#cp /lib/x86_64-linux-gnu/libm.so.6 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libm.so
+#cp /lib/x86_64-linux-gnu/libgcc_s.so.1 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libgcc_s.so
+#cp /lib/x86_64-linux-gnu/libc.so.6 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libc.so
+#cp /lib/x86_64-linux-gnu/libpthread.so.0 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libpthread.so
+#cp /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libgobject-2.0.so
+#cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 ../SquiggleMark-build/linux-bundle/SquiggleMark/SquiggleMark/libstdc++.so
+

@@ -1,0 +1,47 @@
+Credits
+
+SquiggleMark uses these open source software and libraries to watermark and resize images and videos.
+
+FFMpeg: FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. This software uses libraries from the FFmpeg project under the LGPLv2.1. The actual watermarking of videos is done by FFmpeg, and not SquiggleMark.
+
+https://www.ffmpeg.org
+
+Theora/Vorbis/Ogg: Theora is an open video codec being developed by the Xiph.org Foundation as part of their Ogg project (It is a project that aims to integrate On2's VP3 video codec, Ogg Vorbis audio codec and Ogg multimedia container formats into a multimedia solution that can compete with MPEG-4 format). Theora is targeted at competing with MPEG-4 (e.g., XviD and DivX), RealVideo, Windows Media Video, and similar lower-bitrate video compression schemes. 
+
+Vorbis is an audio codec, Theora is a video codec. Ogg is the transport layer that both are stored in, so a video file will be Theora-encoded data inside an Ogg file, while audio is normally Vorbis-encoded data inside an ogg file. 
+
+https://www.theora.org
+
+FreeType: FreeType is a freely available software library to render fonts. SquiggleMark uses FreeType library to render fonts for the purpose of watermarking images.
+
+https://www.freetype.org
+http://git.savannah.gnu.org/cgit/freetype/freetype2.git/tree/docs/FTL.TXT
+
+Libjpeg: Libjpeg is a widely used C library for reading and writing JPEG image files. It was developed by Tom Lane and the Independent JPEG Group (IJG) during the 1990's. SquiggleMark uses Libjpeg for processing JPEG image files.
+
+http://libjpeg.sourceforge.net/
+
+Libpng: Libpng is the official PNG reference library. SquiggleMark uses Libpng for processing PNG image files.
+
+http://www.libpng.org/pub/png/libpng.html
+
+Libgd: GD is an open source code library for the dynamic creation of images by programmers. The library was originally developped by Thomas Boutell and is now maintained by Pierre Joye under the umbrella of PHP.net
+
+http://libgd.github.io/
+
+zlib: A Massively Spiffy Yet Delicately Unobtrusive Compression Library. zlib was written by Jean-loup Gailly (compression) and Mark Adler (decompression). 
+
+http://zlib.net/
+
+OpenSSL: OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. This product includes cryptographic software written by Eric Young. This product includes software written by Tim Hudson (tjh@cryptsoft.com). SquiggleMark uses OpenSSL libraries to encrypt and decrypt files.
+
+https://www.openssl.org/
+
+QT: Qt is the faster, smarter way to create innovative devices, UIs and applications for multiple screens. SquiggleMark uses QT libraries to build the user interface. QT enables SquiggleMark to run on Windows, Linux and OSX platforms.
+
+https://www.qt.io/
+
+Our Obligations under the LGPL
+
+We are obligated to provide you the complete source code of the above mentioned libraries that we use to build SquiggleMark. You, the user, are allowed to change and re-link the libraries used in SquiggleMark – including reverse engineering. Please submit a request to us via email if you require the source code for these libraries and for linking instructions.
+
