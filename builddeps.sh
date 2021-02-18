@@ -177,7 +177,7 @@ function installOpenCV()
 	if [ $RESULT -gt 0 ]; then return 0; fi
 
 	procureLib SCM="git" SCM_CMD="clone" URL="https://github.com/opencv/opencv.git" LIB=$LIB
-	makeLib LIB=${LIB} BUILDSYSTEM="cmake"
+	makeLib LIB=${LIB} CFLAGS="-DBUILD_TESTS=OFF" BUILDSYSTEM="cmake"
 }
 
 function installAlsa()
