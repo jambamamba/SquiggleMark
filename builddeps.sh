@@ -113,6 +113,9 @@ function installX264()
 
 	procureLib SCM="git" SCM_CMD="clone" URL="https://code.videolan.org/videolan/x264.git" LIB=$LIB
 	makeLib LIB=${LIB} CONF_FLAGS="--enable-shared#space#--disable-asm"
+	pushd $BUILD_DIR
+	ln -s libx264.so.161 libx264.so
+	popd
 }
 
 function installFFMpegDependencies()
@@ -162,7 +165,7 @@ function installFFMpeg()
 	cp -fr $LIBS_DIR/libx264/x264.h $INC_DIR
 	cp -fr $LIBS_DIR/libx264/x264_config.h $INC_DIR
 
-	makeLib LIB=${LIB} CONF_FLAGS="--enable-shared#space#--arch#equal#x86#space#--enable-libvpx#space#--enable-libtheora#space#--disable-encoder#equal#vorbis#space#--enable-libvorbis#space#--enable-libmp3lame#space#--enable-libx264#space#--enable-gpl#space#--enable-ffplay#space#--extra-cflags#equal#-I$INC_DIR/#space#--extra-ldflags#equal#-L$DOCKER_LIB"
+	makeLib LIB=${LIB} CONF_FLAGS="--enable-shared#space#--arch#equal#x86#space#--enable-libvpx#space#--enable-libtheora#space#--disable-encoder#equal#vorbis#space#--enable-libvorbis#space#--enable-libmp3lame#space#--enable-libx264#space#--enable-gpl#space#--enable-ffplay#space#--extra-cflags#equal#-I$INC_DIR/#space#--extra-ldflags#equal#-L$BUILD_DIR"
 	
 	copyFFMpegBinaries
 }
@@ -206,12 +209,11 @@ function installGifLib()
 
 function installAllLibs()
 {
-	sudo chown -R dev:dev $DOCKER_LIB
-	sudo chown -R dev:dev $DOCKER_BIN
 	sudo chown -R dev:dev $BUILD_DIR
-	cp -P $BUILD_DIR/* $DOCKER_LIB/
+	sudo chown -R dev:dev $BUILD_DIR
+	sudo chown -R dev:dev $BUILD_DIR
 
-	echo "/home/dev/lib" > /tmp/leila.conf
+	echo "$BUILD_DIR" > /tmp/leila.conf
 	sudo mv /tmp/leila.conf /etc/ld.so.conf.d/leila.conf
 	sudo ldconfig
 }
