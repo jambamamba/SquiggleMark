@@ -136,13 +136,13 @@ function copyFFMpegBinaries()
 
 function installFFMpeg()
 {
-	installFFMpegDependencies
+       installFFMpegDependencies
 
-	libExists LIB="avcodec" RESULT=0
-	if [ $RESULT -gt 0 ]; then
-		copyFFMpegBinaries
-		return 0; 
-	fi
+       libExists LIB="avcodec" RESULT=0
+       if [ $RESULT -gt 0 ]; then
+               copyFFMpegBinaries
+               return 0;
+       fi
 	
 	local LIB="ffmpeg"
 	procureLib SCM="git" SCM_CMD="clone" URL="https://git.ffmpeg.org/$LIB.git" LIB=$LIB
@@ -151,16 +151,16 @@ function installFFMpeg()
 	mkdir -p $PKG_CONFIG_PATH
 	cp -f $LIBS_DIR/libvorbis/vorbisenc.pc $PKG_CONFIG_PATH
 	cp -f $LIBS_DIR/libvorbis/vorbis.pc $PKG_CONFIG_PATH
-	cp -f $LIBS_DIR/libogg/ogg.pc $PKG_CONFIG_PATH
-	
+        cp -f $LIBS_DIR/libogg/ogg.pc $PKG_CONFIG_PATH
+        cp -f $LIBS_DIR/libvpx/vpx.pc $PKG_CONFIG_PATH
+
 	local INC_DIR=$LIBS_DIR/../include
 	mkdir -p $INC_DIR
-	cp -fr $LIBS_DIR/libtheora/include/* $INC_DIR
-	cp -fr $LIBS_DIR/libogg/include/* $INC_DIR
-	mkdir -p $INC_DIR/lame
-	cp -fr $LIBS_DIR/libmp3lame/include/lame.h $INC_DIR/lame
-	
-	cp -fr $LIBS_DIR/libtheora/include/* $INC_DIR
+        mkdir -p $INC_DIR/lame
+        cp -fr $LIBS_DIR/libmp3lame/include/lame.h $INC_DIR/lame
+        cp -fr $LIBS_DIR/libtheora/include/* $INC_DIR
+        cp -fr $LIBS_DIR/libogg/include/* $INC_DIR
+        cp -fr $LIBS_DIR/libvpx/vpx $INC_DIR
 	cp -fr $LIBS_DIR/libvorbis/include/* $INC_DIR
 	cp -fr $LIBS_DIR/libx264/x264.h $INC_DIR
 	cp -fr $LIBS_DIR/libx264/x264_config.h $INC_DIR
@@ -221,14 +221,14 @@ function installAllLibs()
 function main()
 {
 	configureLibsDirectory
-	installZLib
-	installPngLib
-	installJpegLib
-	installFreetypeLib
-	installAlsa
-	installGifLib
+        installZLib
+        installPngLib
+        installJpegLib
+        installFreetypeLib
+        installAlsa
+        installGifLib
 	installFFMpeg
-	installOpenCV
+        installOpenCV
 	installAllLibs
 }
 
