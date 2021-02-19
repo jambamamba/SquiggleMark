@@ -99,7 +99,7 @@ INCLUDE_DIRECTORIES(
     ${LIBS_DIR}/alsa/include
     ${LIBS_DIR}/gif/lib
     ${LIBS_DIR}/ffmpeg
-    ${LIBS_DIR}/freetype-2.10.0/include
+    ${LIBS_DIR}/freetype-2.10.4/include
     ../License
     ../Updater
     )
