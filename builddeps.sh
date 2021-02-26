@@ -55,6 +55,21 @@ function installJpegLib()
 	find $LIBS_DIR/${LIB}/ -name "*.h" | xargs sudo cp -Pt /usr/local/include/
 }
 
+function installTurboJpegLib()
+{
+	libExists LIB="turbojpeg" RESULT=0
+        if [ $RESULT -gt 0 ]; then return 0; fi
+
+	local LIB="turbojpeg"
+	procureLib SCM="git" SCM_CMD="clone" URL="https://github.com/libjpeg-turbo/libjpeg-turbo.git" LIB=$LIB
+	makeLib LIB=${LIB} BUILDSYSTEM="cmake"
+        pushd $LIBS_DIR/${LIB}
+        ln -s build/jconfig.h jconfig.h
+        popd
+
+	#find $LIBS_DIR/${LIB}/ -name "*.h" | xargs sudo cp -Pt /usr/local/include/
+}
+
 function installFreetypeLib()
 {
 	local LIB="freetype-2.10.4"
@@ -223,7 +238,8 @@ function main()
 	configureLibsDirectory
         installZLib
         installPngLib
-        installJpegLib
+        #installJpegLib
+	installTurboJpegLib
         installFreetypeLib
         installAlsa
         installGifLib
@@ -231,5 +247,6 @@ function main()
         installOpenCV
 	installAllLibs
 }
+
 
 main
