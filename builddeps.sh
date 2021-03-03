@@ -57,17 +57,25 @@ function installJpegLib()
 
 function installTurboJpegLib()
 {
-	libExists LIB="turbojpeg" RESULT=0
+        local LIB="libturbojpeg"
+	libExists LIB="$LIB" RESULT=0
         if [ $RESULT -gt 0 ]; then return 0; fi
 
-	local LIB="turbojpeg"
 	procureLib SCM="git" SCM_CMD="clone" URL="https://github.com/libjpeg-turbo/libjpeg-turbo.git" LIB=$LIB
 	makeLib LIB=${LIB} BUILDSYSTEM="cmake"
         pushd $LIBS_DIR/${LIB}
         ln -s build/jconfig.h jconfig.h
         popd
+}
 
-	#find $LIBS_DIR/${LIB}/ -name "*.h" | xargs sudo cp -Pt /usr/local/include/
+function installWebpLib()
+{
+        local LIB="libwebp"
+	libExists LIB="$LIB" RESULT=0
+	if [ $RESULT -gt 0 ]; then return 0; fi
+
+        procureLib SCM="git" SCM_CMD="clone" URL="https://github.com/webmproject/libwebp.git" LIB=$LIB
+	makeLib LIB=${LIB} BUILDSYSTEM="cmake"
 }
 
 function installFreetypeLib()
@@ -78,8 +86,8 @@ function installFreetypeLib()
 
 	local EXT="tar.gz"
 	local URL="https://download.savannah.gnu.org/releases/freetype/${LIB}.${EXT}"
-	procureLib LIB=${LIB} EXT=${EXT} URL=${URL}
-	makeLib LIB=${LIB} CONF_FLAGS="--enable-shared"
+	procureLib SCM="" LIB=${LIB} EXT=${EXT} URL=${URL}
+	makeLib LIB=${LIB} CONF_FLAGS="--enable-shared" BUILDSYSTEM=""
 }
 
 function installXiphLibrary()
@@ -238,7 +246,8 @@ function main()
 	configureLibsDirectory
         installZLib
         installPngLib
-        #installJpegLib
+	installWebpLib
+	installJpegLib
 	installTurboJpegLib
         installFreetypeLib
         installAlsa
@@ -247,6 +256,5 @@ function main()
         installOpenCV
 	installAllLibs
 }
-
 
 main
