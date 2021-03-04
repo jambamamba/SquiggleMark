@@ -72,7 +72,7 @@ function installWebpLib()
 {
         local LIB="libwebp"
 	libExists LIB="$LIB" RESULT=0
-	if [ $RESULT -gt 0 ]; then return 0; fi
+	#if [ $RESULT -gt 0 ]; then return 0; fi
 
         procureLib SCM="git" SCM_CMD="clone" URL="https://github.com/webmproject/libwebp.git" LIB=$LIB
 	makeLib LIB=${LIB} BUILDSYSTEM="cmake"
@@ -229,6 +229,19 @@ function installGifLib()
 	makeLib LIB=${LIB} CONF_FLAGS="--enable-shared"
 }
 
+function installXdo()
+{
+	local LIB="libxdo"
+	libExists LIB="$LIB" RESULT=0
+	if [ $RESULT -gt 0 ]; then return 0; fi
+
+	procureLib SCM="git" SCM_CMD="clone" URL="https://github.com/jordansissel/xdotool.git" LIB=$LIB
+	pushd $LIBS_DIR/${LIB}
+	make -j$(getconf _NPROCESSORS_ONLN)
+	find . -name "lib*.so*" | xargs cp -Pt $BUILD_DIR/
+	popd
+}
+
 
 function installAllLibs()
 {
@@ -254,6 +267,7 @@ function main()
         installGifLib
 	installFFMpeg
         installOpenCV
+	#installXdo
 	installAllLibs
 }
 
